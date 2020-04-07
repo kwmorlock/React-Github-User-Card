@@ -26,6 +26,20 @@ class App extends React.Component {
     })
   }
 
+  componentDidUpdate(){
+    axios.get('https://api.github.com/userskwmorlock/followers')
+    .then(response => {
+      console.log(response);
+      this.setState({
+        userObject: response.data
+      })
+    })
+    .catch(error => {
+      console.log("the data was not returned, error")
+    })
+
+  }
+
   render() {
     return(
     <div>
