@@ -2,8 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import Usercard from "./Usercard";
 
-class App extends React.component {
+class App extends React.Component {
   constructor() {
     super ();
     this.state = {
@@ -28,7 +29,7 @@ class App extends React.component {
   render() {
     return(
     <div>
-     {this.stateuserObject && <Usercard user={this.state.userObject}/>}
+     {this.state.userObject && <Usercard user={this.state.userObject}/>}
     </div>
     )
   }
