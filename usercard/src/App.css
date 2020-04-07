@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: hotpink;
+  display:flex;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+p {
+  color: lightblue;
+  font-size: 3rem;
+  display:flex;
+  justify-content: center;
+}
+

@@ -8,7 +8,8 @@ class App extends React.Component {
   constructor() {
     super ();
     this.state = {
-      userObject: null,
+      user: null,
+      followers: []
     };
   }
 
@@ -17,21 +18,19 @@ class App extends React.Component {
     .then(response => {
       console.log(response);
       this.setState({
-        userObject: response.data
+        user: response.data
 
       });
     })
     .catch(error => {
       console.log("the data was not returned, error")
     })
-  }
-
-  componentDidUpdate(){
-    axios.get('https://api.github.com/userskwmorlock/followers')
+  
+    axios.get('https://api.github.com/users/kwmorlock/followers')
     .then(response => {
       console.log(response);
       this.setState({
-        userObject: response.data
+        followers: response.data
       })
     })
     .catch(error => {
@@ -43,7 +42,13 @@ class App extends React.Component {
   render() {
     return(
     <div>
-     {this.state.userObject && <Usercard user={this.state.userObject}/>}
+     {this.state.user && <Usercard user={this.state.user}/>}
+    {this.state.followers && this.state.followers.map((follower, idx) => {
+      return (
+        <Usercard user ={follower} />
+      )
+    })}
+    
     </div>
     )
   }
